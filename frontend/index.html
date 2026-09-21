@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>二进制布局检查工作台</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>二进制布局检查工作台</h1>
+  <div class="actions">
+    <button id="btn-parse" class="primary">解析 ▸</button>
+    <button id="btn-encode">重新编码 ⟳</button>
+    <button id="btn-example">载入示例</button>
+    <label class="chk"><input type="checkbox" id="opt-fix-len" checked> 重算依赖长度</label>
+    <label class="chk"><input type="checkbox" id="opt-fix-crc" checked> 重算校验</label>
+  </div>
+</header>
+
+<main>
+  <section class="left">
+    <h2>布局定义 <span class="hint">struct / bits / choice / bytes / checksum / align / let / if</span></h2>
+    <textarea id="layout" spellcheck="false"></textarea>
+    <h2>十六进制输入 <span class="hint" id="hex-hint"></span></h2>
+    <textarea id="hex" spellcheck="false" rows="6"></textarea>
+    <div id="status" class="status"></div>
+  </section>
+
+  <section class="right">
+    <div class="pane">
+      <h2>字段树</h2>
+      <div id="tree" class="tree"></div>
+    </div>
+    <div class="pane">
+      <h2>字节视图</h2>
+      <div id="hexview" class="hexview"></div>
+    </div>
+  </section>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
