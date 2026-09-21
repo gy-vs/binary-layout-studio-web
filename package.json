@@ -1,0 +1,11 @@
+{
+  "name": "binary-layout-studio-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "二进制布局检查工作台：DSL 定义布局，解析/编码共享编译计划，字段树与字节范围双向定位",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/"
+  }
+}

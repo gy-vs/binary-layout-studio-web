@@ -1,0 +1,149 @@
+:root {
+  --bg: #14171c;
+  --panel: #1c2129;
+  --border: #2c333f;
+  --text: #d7dde6;
+  --muted: #8a94a3;
+  --accent: #4da3ff;
+  --err: #ff5f56;
+  --ok: #3fb950;
+  --warn: #d29922;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.5 "SF Mono", "Cascadia Code", Consolas, "Courier New", monospace;
+}
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+}
+header h1 { font-size: 16px; margin: 0; }
+header .hint { color: var(--muted); font-size: 12px; }
+main {
+  display: grid;
+  grid-template-columns: minmax(340px, 44%) 1fr;
+  gap: 10px;
+  padding: 10px;
+  height: calc(100vh - 49px);
+}
+#left, #right { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.panel.grow { flex: 1; }
+.panel-title { font-size: 12px; color: var(--text); margin-bottom: 6px; }
+.panel-title .muted { color: var(--muted); font-weight: normal; }
+textarea {
+  width: 100%;
+  resize: vertical;
+  background: #10141a;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: inherit;
+  font-size: 12.5px;
+  padding: 6px;
+}
+#schema { flex: 1; min-height: 220px; }
+.actions { display: flex; align-items: center; gap: 8px; }
+button {
+  background: #232a35;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 14px;
+  font: inherit;
+  cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+button.primary { background: #1f3a5f; border-color: #2f5c94; }
+.badge { font-size: 12px; }
+.badge.ok { color: var(--ok); }
+.badge.err { color: var(--err); }
+.status {
+  font-size: 12px;
+  white-space: pre-wrap;
+  max-height: 160px;
+  overflow: auto;
+  color: var(--muted);
+}
+.status .err { color: var(--err); }
+.status .warn { color: var(--warn); }
+.status .ok { color: var(--ok); }
+.status .derived { color: var(--accent); }
+
+/* 字段树 */
+.tree { overflow: auto; flex: 1; font-size: 12.5px; }
+.node { border-left: 2px solid transparent; }
+.node > .row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 1px 4px;
+  cursor: pointer;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.node > .row:hover { background: #232b38; }
+.node.sel > .row { background: #1f3a5f; border-left-color: var(--accent); }
+.node.errnode > .row { background: rgba(255, 95, 86, 0.15); }
+.kids { margin-left: 16px; }
+.fname { color: #9ecbff; }
+.kind { color: var(--muted); font-size: 11px; }
+.range { color: var(--muted); font-size: 11px; }
+.node.errnode .fname { color: var(--err); }
+.csfail { color: var(--err); font-size: 11px; }
+.csok { color: var(--ok); font-size: 11px; }
+.caseinfo { color: var(--warn); font-size: 11px; }
+input[type="text"], input[type="number"] {
+  background: #10141a;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font: inherit;
+  font-size: 12px;
+  padding: 1px 4px;
+  width: 110px;
+}
+input.bytes { width: 220px; }
+input:focus { outline: 1px solid var(--accent); }
+.arrbtn {
+  padding: 0 6px;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+/* 字节网格 */
+.grid { overflow: auto; font-size: 12.5px; }
+.grow-row { display: flex; gap: 2px; margin-bottom: 2px; }
+.goff { color: var(--muted); width: 64px; flex: none; }
+.byte {
+  width: 22px;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  flex: none;
+}
+.byte:hover { border-color: var(--text); }
+.byte.sel { outline: 2px solid #fff; outline-offset: -2px; }
+.byte.errb { background: var(--err) !important; color: #000; }
+.byte.c0 { background: #2d4a6b; } .byte.c1 { background: #3d5a45; }
+.byte.c2 { background: #5b4a2d; } .byte.c3 { background: #523a5e; }
+.byte.c4 { background: #2d5050; } .byte.c5 { background: #5e3a3a; }
+.byte.c6 { background: #444b2d; } .byte.c7 { background: #37455e; }
+.byte.c8 { background: #4a2d4a; } .byte.c9 { background: #2d4a3c; }
+.byte.c10 { background: #56502d; } .byte.c11 { background: #3a3a5e; }
+.byte.none { background: #20262f; color: #6b7484; }

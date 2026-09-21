@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>二进制布局工作台</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <h1>二进制布局工作台</h1>
+  <span class="hint">定义布局 → 粘贴十六进制 → 解析 / 编辑 → 重编码</span>
+</header>
+<main>
+  <section id="left">
+    <div class="panel">
+      <div class="panel-title">布局 DSL <span class="muted">struct / 位域 / 数组 / choose / 校验 / align</span></div>
+      <textarea id="schema" spellcheck="false"></textarea>
+    </div>
+    <div class="panel">
+      <div class="panel-title">十六进制输入</div>
+      <textarea id="hex" spellcheck="false" rows="4"></textarea>
+    </div>
+    <div class="actions">
+      <button id="btn-parse" class="primary">解析</button>
+      <button id="btn-encode">按编辑重编码</button>
+      <span id="roundtrip" class="badge"></span>
+    </div>
+    <div id="status" class="status"></div>
+  </section>
+  <section id="right">
+    <div class="panel grow">
+      <div class="panel-title">字段树 <span class="muted">点击行定位字节；直接编辑值</span></div>
+      <div id="tree" class="tree"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">字节网格 <span class="muted">点击字节定位字段</span></div>
+      <div id="grid" class="grid"></div>
+    </div>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>
